@@ -1,4 +1,4 @@
-import csv
+import CSV
 from pprint import pprint
 
 def ClassFactory(class_name, dictionary):
@@ -10,7 +10,7 @@ class CsvReader:
     def __init__(self, filepath):
         self.data = []
         with open(filepath) as text_data:
-            csv_data = csv.DictReader(text_data, delimiter=',')
+            csv_data = CSV.DictReader(text_data, delimiter=',')
             for row in csv_data:
                 self.data.append(row)
                 pprint(row)

@@ -1,4 +1,4 @@
-from Calculator import Calculator
+from Python.Calculator import Calculator
 import collections
 
 def pop_mean(list):
@@ -13,7 +13,7 @@ def median(list):
         second_median = list[len(list) // 2 - 1]
         answer = (first_median + second_median) / 2
     else:
-        answer = num_list[len(num_list) // 2]
+        answer = list[len(list) // 2]
     return answer
 
 def mode(list):

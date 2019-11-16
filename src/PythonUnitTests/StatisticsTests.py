@@ -1,5 +1,5 @@
 import unittest
-from Statistics import Statistics
+from Python.Statistics import Statistics
 
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:

@@ -3,14 +3,14 @@ import collections
 
 def pop_mean(list):
     num_sum = sum(list)
-    answer = Calculator.divide(self, num_sum , len(list))
+    answer = Calculator.divide(num_sum, len(list))
     return answer
 
 def median(list):
     list.sort()
     if len(list) % 2 == 0:
-        first_median = num_list[len(list) // 2]
-        second_median = num_list[len(list) // 2 - 1]
+        first_median = list[len(list) // 2]
+        second_median = list[len(list) // 2 - 1]
         answer = (first_median + second_median) / 2
     else:
         answer = num_list[len(num_list) // 2]
@@ -24,53 +24,56 @@ def mode(list):
     if len(mode_val) == len(list):
         answer = 0
     else:
-        answer=  join(map(str, mode_val))
+        answer = join(map(str, mode_val))
     return answer
 
 def pop_variance(list):
     mu = pop_mean(list)
-    answer =  Calculator.divide(self,sum(Calculator.square(self, Calculator.subtract(self, number, mu))), (len(list)-1))
+    for number in list:
+        answer = Calculator.divide(sum(Calculator.square(Calculator.subtract(number, mu))), (len(list)-1))
     return answer
 
 def pop_standard_deviation(list):
-    answer =  Calculator.squareRoot(self, Calculator.divide(self,sum(Calculator.square(self, Calculator.subtract(self, number, mu))), len(list)))
+    mu = pop_mean(list)
+    for number in list:
+        answer = Calculator.squareRoot(Calculator.divide(sum(Calculator.square(Calculator.subtract(number, mu))), len(list)))
     return answer
 
 def standardized_score(list):
     mu = pop_mean(list)
     sd = pop_standard_deviation(list)
-    answer =  Calculator.divide(self, Calculator.subtract(self, number, mu), SD)
+    for number in list:
+        answer = Calculator.divide(Calculator.subtract(number, mu), sd)
     return answer
 
 def sample_mean(list):
     num_values = len(list)
-    total =0
-    for number in data:
-        total = Calculator.add(self, total, number)
-    answer =  Calculator.divide(self, total, num_values)
+    total = 0
+    for number in list:
+        total = Calculator.add(total, number)
+    answer = Calculator.divide(total, num_values)
     return answer
 
 def sample_standard_deviation(list):
-    score =0
+    score = 0
     mu = pop_mean(list)
     for number in list:
-        score = sum(Calculator.square(self,Calculator.subtract(self, number, mu)))
-    answer =  Calculator.squareRoot(self, Calculator.divide(self,score,(len(list)-1)))
+        score = sum(Calculator.square(Calculator.subtract(number, mu)))
+    answer =  Calculator.squareRoot(Calculator.divide(score,(len(list)-1)))
     return answer
 
 def sample_variance (list):
     mu = pop_mean(list)
-    answer =  Calculator.divide(self,sum(Calculator.square(self, Calculator.subtract(self, number, mu))), len(list))
+    for number in list:
+        answer = Calculator.divide(sum(Calculator.square(Calculator.subtract(number, mu))), len(list))
     return answer
 
 def z_score (list):
     mu = pop_mean(list)
     sd = pop_standard_deviation(list)
     sm = sample_mean(list)
-    answer = Calculator.divide(self,Calculator.subtract(self,sm,mu), Calculator.divide(self,sd,Calculator.squareRoot(self,len(list))))
+    answer = Calculator.divide(Calculator.subtract(sm, mu), Calculator.divide(sd,Calculator.squareRoot(len(list))))
     return answer
-
-
 
 class Statistics(Calculator):
     result = 0
@@ -114,6 +117,6 @@ class Statistics(Calculator):
         self.result = sample_variance(list)
         return self.result
 
-    def z_score (self, list):
+    def z_score(self, list):
         self.result = z_score(list)
         return self.result

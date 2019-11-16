@@ -23,8 +23,6 @@ def mode(list):
     mode_val = [num for num, freq in data_list.items() if freq == max_value]
     if len(mode_val) == len(list):
         answer = 0
-    else:
-        answer = join(map(str, mode_val))
     return answer
 
 def pop_variance(list):
